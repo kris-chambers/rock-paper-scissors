@@ -9,3 +9,13 @@ function getComputerChoice() {
     computerChoice = "SCISSORS"
   return computerChoice
 }
+
+function getPlayerSelection () {
+  playerChoice = prompt("Please choose either rock, paper, or scissors: ")
+  let playerSelection = playerChoice.toUpperCase()
+  return playerSelection
+}
+
+function playRound(playerSelection, computerSelection) {
+
+}
