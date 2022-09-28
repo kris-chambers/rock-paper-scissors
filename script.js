@@ -17,25 +17,29 @@ function getPlayerSelection() {
 }
 
 function compareSelections(playerSelection, computerSelection) {
-  let winner
   if (playerSelection === computerSelection)
-    winner = tie 
+    declareTie(playerSelection); 
   else if (playerSelection === "ROCK" && computerSelection === "SCISSORS")
-    winner = player 
+    declarePlayer(playerSelection, computerSelection); 
   else if (playerSelection === "PAPER" && computerSelection === "ROCK")
-    winner = player
+    declarePlayer(playerSelection, computerSelection);
   else if (playerSelection === "SCISSORS" && computerSelection === "PAPER")
-    winner = player 
+    declarePlayer(playerSelection, computerSelection); 
   else
-    winner = computer 
+    declareComputer(playerSelection, computerSelection); 
 }
 
-function declareWinner(winner, playerSelection, computerSelection) {
-  if (winner = player)
-      
-
+function declareTie(playerSelection) {
+  console.log(`It's a tie! We both chose ${playerSelection}`)
 }
 
-function playRound(playerSelection, computerSelection) {
-
+function declarePlayer(playerSelection, computerSelection) {
+  console.log(`You win! ${playerSelection} beats ${computerSelection}`)
 }
+
+function declareComputer(playerSelection, computerSelection) {
+  console.log(`You lose! ${computerSelection} beats ${playerSelection}`)
+}
+// function playRound(playerSelection, computerSelection) {
+
+// }
