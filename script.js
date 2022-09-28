@@ -1,7 +1,7 @@
 let playerSelection
 let computerSelection
-let playerScore
-let computerScore
+let playerScore = 0
+let computerScore = 0
 
 function getComputerChoice() {
   let randomNumber = Math.floor(Math.random() * 3)
@@ -56,17 +56,15 @@ function playRound() {
 }
 
 function game() {
-  let playerScore
-  let computerScore
   for (let i = 0; i < 5; i++) {
     console.log(`Round ${i+1}`)
-    playRound();
-    console.log(`Your score: ${playerScore}/nComputer Score: ${computerScore}`);
-  if (playerScore === computerScore)
+    playRound()
+    console.log(`Your score: ${playerScore}\nComputer Score: ${computerScore}`)
+  } if (playerScore === computerScore) {
     console.log(`We tied!`);
-  else if (playerScore > computerScore)
+  } else if (playerScore > computerScore) {
     console.log(`You win!`)
-  else if (playerScore < computerScore)
+  } else if (playerScore < computerScore) {
     console.log(`Computer wins!`);  
   }
 }
