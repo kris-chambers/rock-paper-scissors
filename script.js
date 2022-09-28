@@ -1,5 +1,7 @@
 let playerSelection
 let computerSelection
+let playerScore
+let computerScore
 
 function getComputerChoice() {
   let randomNumber = Math.floor(Math.random() * 3)
@@ -19,18 +21,22 @@ function getPlayerSelection() {
 }
 
 function compareSelections() {
-  if (playerSelection === computerSelection)
+  if (playerSelection === computerSelection) {
     declareTie(playerSelection); 
-  else if (playerSelection === "ROCK" && computerSelection === "SCISSORS")
-    declarePlayer(playerSelection, computerSelection); 
-  else if (playerSelection === "PAPER" && computerSelection === "ROCK")
-    declarePlayer(playerSelection, computerSelection);
-  else if (playerSelection === "SCISSORS" && computerSelection === "PAPER")
-    declarePlayer(playerSelection, computerSelection); 
-  else
-    declareComputer(playerSelection, computerSelection); 
+  } else if (playerSelection === "ROCK" && computerSelection === "SCISSORS") {
+    declarePlayer(playerSelection, computerSelection)
+    playerScore += 1;
+  } else if (playerSelection === "PAPER" && computerSelection === "ROCK") {
+    declarePlayer(playerSelection, computerSelection)
+    playerScore += 1;
+  } else if (playerSelection === "SCISSORS" && computerSelection === "PAPER") {
+    declarePlayer(playerSelection, computerSelection)
+    playerScore += 1; 
+  } else {
+    declareComputer(playerSelection, computerSelection)
+    computerScore += 1; 
+  }
 }
-
 function declareTie(playerSelection) {
   console.log(`It's a tie! We both chose ${playerSelection}`)
 }
@@ -47,4 +53,20 @@ function playRound() {
   getPlayerSelection();
   getComputerChoice();
   compareSelections();
+}
+
+function game() {
+  let playerScore
+  let computerScore
+  for (let i = 0; i < 5; i++) {
+    console.log(`Round ${i+1}`)
+    playRound();
+    console.log(`Your score: ${playerScore}/nComputer Score: ${computerScore}`);
+  if (playerScore === computerScore)
+    console.log(`We tied!`);
+  else if (playerScore > computerScore)
+    console.log(`You win!`)
+  else if (playerScore < computerScore)
+    console.log(`Computer wins!`);  
+  }
 }
