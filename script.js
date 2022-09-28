@@ -1,6 +1,8 @@
+let playerSelection
+let computerSelection
+
 function getComputerChoice() {
   let randomNumber = Math.floor(Math.random() * 3)
-  let computerSelection
   if (randomNumber === 0)
     computerSelection = "ROCK"
   else if (randomNumber === 1)
@@ -12,11 +14,11 @@ function getComputerChoice() {
 
 function getPlayerSelection() {
   playerChoice = prompt("Please choose either rock, paper, or scissors: ")
-  let playerSelection = playerChoice.toUpperCase()
+  playerSelection = playerChoice.toUpperCase()
   return playerSelection
 }
 
-function compareSelections(playerSelection, computerSelection) {
+function compareSelections() {
   if (playerSelection === computerSelection)
     declareTie(playerSelection); 
   else if (playerSelection === "ROCK" && computerSelection === "SCISSORS")
@@ -40,6 +42,9 @@ function declarePlayer(playerSelection, computerSelection) {
 function declareComputer(playerSelection, computerSelection) {
   console.log(`You lose! ${computerSelection} beats ${playerSelection}`)
 }
-// function playRound(playerSelection, computerSelection) {
 
-// }
+function playRound() {
+  getPlayerSelection();
+  getComputerChoice();
+  compareSelections();
+}
