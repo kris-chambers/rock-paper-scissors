@@ -50,7 +50,7 @@ function declareComputer(playerSelection, computerSelection) {
 }
 
 function playRound() {
-  getPlayerSelection();
+  // getPlayerSelection();
   getComputerChoice();
   compareSelections();
 }
@@ -68,3 +68,23 @@ function game() {
     console.log(`Computer wins!`);  
   }
 }
+
+const rock = document.querySelector('#rock');
+rock.addEventListener('click', () => {
+  playerSelection = "ROCK";
+  playRound();
+});
+
+const paper = document.querySelector('#paper');
+paper.addEventListener('click', () => {
+  playerSelection = "PAPER";
+  playRound();
+});
+
+const scissors = document.querySelector('#scissors');
+scissors.addEventListener('click', () => {
+  playerSelection = "SCISSORS";
+  playRound();
+});
+
+results = document.createElement('div');
