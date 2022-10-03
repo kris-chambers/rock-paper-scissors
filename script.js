@@ -2,6 +2,8 @@ let playerSelection
 let computerSelection
 let playerScore = 0
 let computerScore = 0
+let roundNumber = 1
+let numberOfTies = 0
 
 function getComputerChoice() {
   let randomNumber = Math.floor(Math.random() * 3)
@@ -16,7 +18,8 @@ function getComputerChoice() {
 
 function compareSelections() {
   if (playerSelection === computerSelection) {
-    declareTie(playerSelection); 
+    numberOfTies += 1; 
+    declareTie(playerSelection);
   } else if (playerSelection === "rock" && computerSelection === "scissors") {
     playerScore += 1;
     declarePlayer(playerSelection, computerSelection)
@@ -33,39 +36,41 @@ function compareSelections() {
 }
 function declareTie(playerSelection) {
   results.textContent =`It's a tie! We both chose ${playerSelection}.`
-  playerscore.textContent = `Your Score = ${playerScore}`
-  computerscore.textContent = `Computer Score = ${computerScore}`
+  displayplayerscore.textContent = `Your Score: ${playerScore}`
+  displaycomputerscore.textContent = `Computer Score: ${computerScore}`
+  displayTies.textContent = `Ties: ${numberOfTies}`
 }
 
 function declarePlayer(playerSelection, computerSelection) {
   playerSelection = capitalized(playerSelection);
   results.textContent = `You win! ${playerSelection} beats 
   ${computerSelection}.`
-  playerscore.textContent = `Your Score = ${playerScore}`
-  computerscore.textContent = `Computer Score = ${computerScore}`
+  displayplayerscore.textContent = `Your Score: ${playerScore}`
+  displaycomputerscore.textContent = `Computer Score: ${computerScore}`
+  displayTies.textContent = `Ties: ${numberOfTies}`
 }
 
 function declareComputer(playerSelection, computerSelection) {
   computerSelection = capitalized(computerSelection);
   results.textContent = `You lose! ${computerSelection} beats 
   ${playerSelection}.`
-  playerscore.textContent = `Your Score = ${playerScore}`
-  computerscore.textContent = `Computer Score = ${computerScore}`
+  displayplayerscore.textContent = `Your Score: ${playerScore}`
+  displaycomputerscore.textContent = `Computer Score: ${computerScore}`
+  displayTies.textContent = `Ties: ${numberOfTies}`
 }
 
 function playRound() {
+  round.textContent = `Round ${roundNumber}`;
   getComputerChoice();
   compareSelections();
+  roundNumber++;
 }
 
 function game() {
-  for (let i = 0; i < 5; i++) {
-    console.log(`Round ${i+1}`)
+  for (let i = 0; i; i++) {
+    round.textContent = `Round ${i+1}`
     playRound()
-    console.log(`Your score: ${playerScore}\nComputer Score: ${computerScore}`)
-  } if (playerScore === computerScore) {
-    console.log(`We tied!`);
-  } else if (playerScore > computerScore) {
+  } if (playerScore === 5) {
     console.log(`You win!`)
   } else if (playerScore < computerScore) {
     console.log(`Computer wins!`);  
@@ -96,6 +101,9 @@ scissors.addEventListener('click', () => {
 });
 
 results = document.querySelector('#results');
-playerscore = document.querySelector('#playerscore');
-computerscore = document.querySelector('#computerscore');
+displayplayerscore = document.querySelector('#displayplayerscore');
+displaycomputerscore = document.querySelector('#displaycomputerscore');
+round = document.querySelector('#round');
+winner = document.querySelector('winner');
+displayTies = document.querySelector('#displayTies')
 
