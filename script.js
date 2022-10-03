@@ -14,6 +14,7 @@ round = document.querySelector('#round');
 winner = document.querySelector('#winner');
 displayTies = document.querySelector('#displayTies');
 buttons = document.querySelector('.buttons');
+bottom = document.querySelector('#bottom');
 
 // Button Event Listeners
 const rock = document.querySelector('#rock');
@@ -33,6 +34,9 @@ scissors.addEventListener('click', () => {
   playerSelection = "scissors";
   playRound();
 });
+
+const reset = document.querySelector('#reset');
+reset.addEventListener('click', resetGame);
 
 // Functions
 function playRound() {
@@ -104,7 +108,6 @@ function declareComputer(playerSelection, computerSelection) {
 function isGameOver() {
   if (playerScore === 5 || computerScore === 5) {
     disableButton();
-    playAgain();
     return true;
   }
   return false;
@@ -129,19 +132,22 @@ function disableButton() {
   document.getElementById("scissors").disabled = true;
 }
 
-function disableButton() {
-  document.getElementById("rock").disabled = true;
-  document.getElementById("paper").disabled = true;
-  document.getElementById("scissors").disabled = true;
-}
-
-function playAgain() {
-  const playAgain = document.createElement('button')
-  playAgain.textContent = 'Play Again?'
-  buttons.appendChild(playAgain)
+function enableButton() {
+  document.getElementById("rock").disabled = false;
+  document.getElementById("paper").disabled = false;
+  document.getElementById("scissors").disabled = false;
 }
 
 function resetGame() {
-  buttons.removeChild(playAgain)
-
+  enableButton()
+  playerScore = 0
+  computerScore = 0
+  roundNumber = 1
+  numberOfTies = 0
+  round.textContent = '';
+  results.textContent = '';
+  displayplayerscore.textContent = '';
+  displaycomputerscore.textContent = '';
+  displayTies.textContent = '';
+  winner.textContent = '';
 }
