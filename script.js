@@ -23,17 +23,49 @@ function compareSelections() {
   } else if (playerSelection === "rock" && computerSelection === "scissors") {
     playerScore += 1;
     declarePlayer(playerSelection, computerSelection)
+    if ( isGameOver() ) {
+      return declareWinner(playerScore, computerScore);
+    }
+    return console.log('game is still on');
   } else if (playerSelection === "paper" && computerSelection === "rock") {
     playerScore += 1;
     declarePlayer(playerSelection, computerSelection)
+    if ( isGameOver() ) {
+      return declareWinner(playerScore, computerScore);
+    }
+    return console.log('game is still on');
   } else if (playerSelection === "scissors" && computerSelection === "paper") {
     playerScore += 1;
-    declarePlayer(playerSelection, computerSelection)   
+    declarePlayer(playerSelection, computerSelection)
+    if ( isGameOver() ) {
+      return declareWinner(playerScore, computerScore);
+    }
+    return console.log('game is still on');   
   } else {
     computerScore += 1;
     declareComputer(playerSelection, computerSelection)
+    if ( isGameOver() ) {
+      return declareWinner(playerScore, computerScore);
+    }
+    return console.log('game is still on');
   }
 }
+
+function declareWinner(playerScore, computerScore) {
+  if (playerScore > computerScore) {
+    winner.textContent = `You win the game!`
+  } else {
+    winner.textContent = `The computer wins the game!`
+  }
+}
+
+function isGameOver() {
+  if (playerScore === 5 || computerScore === 5) {
+    return true;
+  }
+  return false;
+}
+
 function declareTie(playerSelection) {
   results.textContent =`It's a tie! We both chose ${playerSelection}.`
   displayplayerscore.textContent = `Your Score: ${playerScore}`
@@ -66,17 +98,6 @@ function playRound() {
   roundNumber++;
 }
 
-function game() {
-  for (let i = 0; i; i++) {
-    round.textContent = `Round ${i+1}`
-    playRound()
-  } if (playerScore === 5) {
-    console.log(`You win!`)
-  } else if (playerScore < computerScore) {
-    console.log(`Computer wins!`);  
-  }
-}
-
 function capitalized(word) {
   word = word.charAt(0).toUpperCase() + word.slice(1)
   return word;
@@ -104,6 +125,6 @@ results = document.querySelector('#results');
 displayplayerscore = document.querySelector('#displayplayerscore');
 displaycomputerscore = document.querySelector('#displaycomputerscore');
 round = document.querySelector('#round');
-winner = document.querySelector('winner');
-displayTies = document.querySelector('#displayTies')
+winner = document.querySelector('#winner');
+displayTies = document.querySelector('#displayTies');
 
