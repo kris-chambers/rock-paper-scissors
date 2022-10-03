@@ -20,21 +20,9 @@ function compareSelections() {
   if (playerSelection === computerSelection) {
     numberOfTies += 1; 
     declareTie(playerSelection);
-  } else if (playerSelection === "rock" && computerSelection === "scissors") {
-    playerScore += 1;
-    declarePlayer(playerSelection, computerSelection)
-    if ( isGameOver() ) {
-      return declareWinner(playerScore, computerScore);
-    }
-    return console.log('game is still on');
-  } else if (playerSelection === "paper" && computerSelection === "rock") {
-    playerScore += 1;
-    declarePlayer(playerSelection, computerSelection)
-    if ( isGameOver() ) {
-      return declareWinner(playerScore, computerScore);
-    }
-    return console.log('game is still on');
-  } else if (playerSelection === "scissors" && computerSelection === "paper") {
+  } else if ((playerSelection === "rock" && computerSelection === "scissors") || 
+  (playerSelection === "paper" && computerSelection === "rock") || 
+  (playerSelection === "scissors" && computerSelection === "paper")) {
     playerScore += 1;
     declarePlayer(playerSelection, computerSelection)
     if ( isGameOver() ) {
