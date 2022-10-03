@@ -18,31 +18,39 @@ function compareSelections() {
   if (playerSelection === computerSelection) {
     declareTie(playerSelection); 
   } else if (playerSelection === "rock" && computerSelection === "scissors") {
-    declarePlayer(playerSelection, computerSelection)
     playerScore += 1;
+    declarePlayer(playerSelection, computerSelection)
   } else if (playerSelection === "paper" && computerSelection === "rock") {
-    declarePlayer(playerSelection, computerSelection)
     playerScore += 1;
-  } else if (playerSelection === "scissors" && computerSelection === "paper") {
     declarePlayer(playerSelection, computerSelection)
-    playerScore += 1; 
+  } else if (playerSelection === "scissors" && computerSelection === "paper") {
+    playerScore += 1;
+    declarePlayer(playerSelection, computerSelection)   
   } else {
+    computerScore += 1;
     declareComputer(playerSelection, computerSelection)
-    computerScore += 1; 
   }
 }
 function declareTie(playerSelection) {
   results.textContent =`It's a tie! We both chose ${playerSelection}.`
+  playerscore.textContent = `Your Score = ${playerScore}`
+  computerscore.textContent = `Computer Score = ${computerScore}`
 }
 
 function declarePlayer(playerSelection, computerSelection) {
   playerSelection = capitalized(playerSelection);
-  results.textContent = `You win! ${playerSelection} beats ${computerSelection}.`
+  results.textContent = `You win! ${playerSelection} beats 
+  ${computerSelection}.`
+  playerscore.textContent = `Your Score = ${playerScore}`
+  computerscore.textContent = `Computer Score = ${computerScore}`
 }
 
 function declareComputer(playerSelection, computerSelection) {
   computerSelection = capitalized(computerSelection);
-  results.textContent = `You lose! ${computerSelection} beats ${playerSelection}.`
+  results.textContent = `You lose! ${computerSelection} beats 
+  ${playerSelection}.`
+  playerscore.textContent = `Your Score = ${playerScore}`
+  computerscore.textContent = `Computer Score = ${computerScore}`
 }
 
 function playRound() {
@@ -88,4 +96,6 @@ scissors.addEventListener('click', () => {
 });
 
 results = document.querySelector('#results');
+playerscore = document.querySelector('#playerscore');
+computerscore = document.querySelector('#computerscore');
 
