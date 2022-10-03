@@ -1,9 +1,45 @@
+// Base variables
 let playerSelection
 let computerSelection
 let playerScore = 0
 let computerScore = 0
 let roundNumber = 1
 let numberOfTies = 0
+
+// JS Query Selector Variables
+results = document.querySelector('#results');
+displayplayerscore = document.querySelector('#displayplayerscore');
+displaycomputerscore = document.querySelector('#displaycomputerscore');
+round = document.querySelector('#round');
+winner = document.querySelector('#winner');
+displayTies = document.querySelector('#displayTies');
+
+// Button Event Listeners
+const rock = document.querySelector('#rock');
+rock.addEventListener('click', () => {
+  playerSelection = "rock";
+  playRound();
+});
+
+const paper = document.querySelector('#paper');
+paper.addEventListener('click', () => {
+  playerSelection = "paper";
+  playRound();
+});
+
+const scissors = document.querySelector('#scissors');
+scissors.addEventListener('click', () => {
+  playerSelection = "scissors";
+  playRound();
+});
+
+// Functions
+function playRound() {
+  round.textContent = `Round ${roundNumber}`;
+  getComputerChoice();
+  compareSelections();
+  roundNumber++;
+}
 
 function getComputerChoice() {
   let randomNumber = Math.floor(Math.random() * 3)
@@ -39,21 +75,6 @@ function compareSelections() {
   }
 }
 
-function declareWinner(playerScore, computerScore) {
-  if (playerScore > computerScore) {
-    winner.textContent = `You win the game!`
-  } else {
-    winner.textContent = `The computer wins the game!`
-  }
-}
-
-function isGameOver() {
-  if (playerScore === 5 || computerScore === 5) {
-    return true;
-  }
-  return false;
-}
-
 function declareTie(playerSelection) {
   results.textContent =`It's a tie! We both chose ${playerSelection}.`
   displayplayerscore.textContent = `Your Score: ${playerScore}`
@@ -79,40 +100,22 @@ function declareComputer(playerSelection, computerSelection) {
   displayTies.textContent = `Ties: ${numberOfTies}`
 }
 
-function playRound() {
-  round.textContent = `Round ${roundNumber}`;
-  getComputerChoice();
-  compareSelections();
-  roundNumber++;
+function isGameOver() {
+  if (playerScore === 5 || computerScore === 5) {
+    return true;
+  }
+  return false;
+}
+
+function declareWinner(playerScore, computerScore) {
+  if (playerScore > computerScore) {
+    winner.textContent = `You win the game!`
+  } else {
+    winner.textContent = `The computer wins the game!`
+  }
 }
 
 function capitalized(word) {
   word = word.charAt(0).toUpperCase() + word.slice(1)
   return word;
 }
-
-const rock = document.querySelector('#rock');
-rock.addEventListener('click', () => {
-  playerSelection = "rock";
-  playRound();
-});
-
-const paper = document.querySelector('#paper');
-paper.addEventListener('click', () => {
-  playerSelection = "paper";
-  playRound();
-});
-
-const scissors = document.querySelector('#scissors');
-scissors.addEventListener('click', () => {
-  playerSelection = "scissors";
-  playRound();
-});
-
-results = document.querySelector('#results');
-displayplayerscore = document.querySelector('#displayplayerscore');
-displaycomputerscore = document.querySelector('#displaycomputerscore');
-round = document.querySelector('#round');
-winner = document.querySelector('#winner');
-displayTies = document.querySelector('#displayTies');
-
