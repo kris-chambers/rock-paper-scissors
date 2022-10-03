@@ -102,6 +102,7 @@ function declareComputer(playerSelection, computerSelection) {
 
 function isGameOver() {
   if (playerScore === 5 || computerScore === 5) {
+    disableButton();
     return true;
   }
   return false;
@@ -118,4 +119,10 @@ function declareWinner(playerScore, computerScore) {
 function capitalized(word) {
   word = word.charAt(0).toUpperCase() + word.slice(1)
   return word;
+}
+
+function disableButton() {
+  document.getElementById("rock").disabled = true;
+  document.getElementById("paper").disabled = true;
+  document.getElementById("scissors").disabled = true;
 }
