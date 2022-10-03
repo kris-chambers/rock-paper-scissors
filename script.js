@@ -13,6 +13,7 @@ displaycomputerscore = document.querySelector('#displaycomputerscore');
 round = document.querySelector('#round');
 winner = document.querySelector('#winner');
 displayTies = document.querySelector('#displayTies');
+buttons = document.querySelector('.buttons');
 
 // Button Event Listeners
 const rock = document.querySelector('#rock');
@@ -103,6 +104,7 @@ function declareComputer(playerSelection, computerSelection) {
 function isGameOver() {
   if (playerScore === 5 || computerScore === 5) {
     disableButton();
+    playAgain();
     return true;
   }
   return false;
@@ -125,4 +127,21 @@ function disableButton() {
   document.getElementById("rock").disabled = true;
   document.getElementById("paper").disabled = true;
   document.getElementById("scissors").disabled = true;
+}
+
+function disableButton() {
+  document.getElementById("rock").disabled = true;
+  document.getElementById("paper").disabled = true;
+  document.getElementById("scissors").disabled = true;
+}
+
+function playAgain() {
+  const playAgain = document.createElement('button')
+  playAgain.textContent = 'Play Again?'
+  buttons.appendChild(playAgain)
+}
+
+function resetGame() {
+  buttons.removeChild(playAgain)
+
 }
