@@ -14,12 +14,6 @@ function getComputerChoice() {
   return computerSelection
 }
 
-function getPlayerSelection() {
-  playerChoice = prompt("Please choose either rock, paper, or scissors: ")
-  playerSelection = playerChoice.toUpperCase()
-  return playerSelection
-}
-
 function compareSelections() {
   if (playerSelection === computerSelection) {
     declareTie(playerSelection); 
@@ -52,7 +46,6 @@ function declareComputer(playerSelection, computerSelection) {
 }
 
 function playRound() {
-  // getPlayerSelection();
   getComputerChoice();
   compareSelections();
 }
