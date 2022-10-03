@@ -6,11 +6,11 @@ let computerScore = 0
 function getComputerChoice() {
   let randomNumber = Math.floor(Math.random() * 3)
   if (randomNumber === 0)
-    computerSelection = "ROCK"
+    computerSelection = "rock"
   else if (randomNumber === 1)
-    computerSelection = "PAPER"
+    computerSelection = "paper"
   else if (randomNumber === 2)
-    computerSelection = "SCISSORS"
+    computerSelection = "scissors"
   return computerSelection
 }
 
@@ -23,13 +23,13 @@ function getPlayerSelection() {
 function compareSelections() {
   if (playerSelection === computerSelection) {
     declareTie(playerSelection); 
-  } else if (playerSelection === "ROCK" && computerSelection === "SCISSORS") {
+  } else if (playerSelection === "rock" && computerSelection === "scissors") {
     declarePlayer(playerSelection, computerSelection)
     playerScore += 1;
-  } else if (playerSelection === "PAPER" && computerSelection === "ROCK") {
+  } else if (playerSelection === "paper" && computerSelection === "rock") {
     declarePlayer(playerSelection, computerSelection)
     playerScore += 1;
-  } else if (playerSelection === "SCISSORS" && computerSelection === "PAPER") {
+  } else if (playerSelection === "scissors" && computerSelection === "paper") {
     declarePlayer(playerSelection, computerSelection)
     playerScore += 1; 
   } else {
@@ -38,15 +38,17 @@ function compareSelections() {
   }
 }
 function declareTie(playerSelection) {
-  console.log(`It's a tie! We both chose ${playerSelection}`)
+  results.textContent =`It's a tie! We both chose ${playerSelection}.`
 }
 
 function declarePlayer(playerSelection, computerSelection) {
-  console.log(`You win! ${playerSelection} beats ${computerSelection}`)
+  playerSelection = capitalized(playerSelection);
+  results.textContent = `You win! ${playerSelection} beats ${computerSelection}.`
 }
 
 function declareComputer(playerSelection, computerSelection) {
-  console.log(`You lose! ${computerSelection} beats ${playerSelection}`)
+  computerSelection = capitalized(computerSelection);
+  results.textContent = `You lose! ${computerSelection} beats ${playerSelection}.`
 }
 
 function playRound() {
@@ -69,22 +71,28 @@ function game() {
   }
 }
 
+function capitalized(word) {
+  word = word.charAt(0).toUpperCase() + word.slice(1)
+  return word;
+}
+
 const rock = document.querySelector('#rock');
 rock.addEventListener('click', () => {
-  playerSelection = "ROCK";
+  playerSelection = "rock";
   playRound();
 });
 
 const paper = document.querySelector('#paper');
 paper.addEventListener('click', () => {
-  playerSelection = "PAPER";
+  playerSelection = "paper";
   playRound();
 });
 
 const scissors = document.querySelector('#scissors');
 scissors.addEventListener('click', () => {
-  playerSelection = "SCISSORS";
+  playerSelection = "scissors";
   playRound();
 });
 
-results = document.createElement('div');
+results = document.querySelector('#results');
+
