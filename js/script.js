@@ -44,10 +44,14 @@ function playRound(humanChoice, computerChoice) {
   
   if (humanChoice === computerChoice) {
     console.log(tieMessage)
-  } else if ((humanChoice === "Paper" && computerChoice === "Rock") || (humanChoice === "Rock" && computerChoice === "Scissors") || (humanChoice === "Scissors" && computerChoice === "Paper")) {
+  } else if ((humanChoice === "Paper" && computerChoice === "Rock") ||
+    (humanChoice === "Rock" && computerChoice === "Scissors") ||
+    (humanChoice === "Scissors" && computerChoice === "Paper")) {
     humanScore += 1;
     console.log(winMessage);
-  } else if ((humanChoice === "Paper" && computerChoice === "Scissors") || (humanChoice === "Rock" && computerChoice === "Paper") || (humanChoice == "Scissors" && computerChoice === "Rock")) {
+  } else if ((humanChoice === "Paper" && computerChoice === "Scissors") ||
+    (humanChoice === "Rock" && computerChoice === "Paper") ||
+    (humanChoice == "Scissors" && computerChoice === "Rock")) {
     computerScore += 1;
     console.log(loseMessage);
   }
