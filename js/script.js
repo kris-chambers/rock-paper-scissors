@@ -1,6 +1,5 @@
 let computerChoice;
 let humanChoice;
-let inputMessage = "Choose 1 for paper, 2 for rock, 3 for scissors.";
 let humanScore = 0;
 let computerScore = 0;
 
@@ -18,18 +17,6 @@ function getComputerChoice() {
       break;  
   }
   return computerChoice;
-}
-
-function getHumanChoice() {
-  humanInput = prompt(inputMessage);
-  if (humanInput === "1") {
-    humanChoice = "Paper";
-  } else if (humanInput === "2") {
-    humanChoice = "Rock";
-  } else if (humanInput === "3") {
-    humanChoice = "Scissors"
-  }
-  return humanChoice;
 }
   
 function displayScore() {
@@ -58,16 +45,16 @@ function playRound(humanChoice, computerChoice) {
   displayScore();
 }
 
-function playGame() {
-  roundNumber = 1;
-  numberOfRounds = 5;
-  while (roundNumber <= numberOfRounds) {
-    console.log(`Round ${roundNumber}`)
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-    playRound(humanSelection, computerSelection)
-    roundNumber += 1;
-  }
+function playGame(humanChoice) {
+  const humanSelection = humanChoice;
+  const computerSelection = getComputerChoice();
+  playRound(humanSelection, computerSelection)
 }
 
-playGame();
+const rockBtn = document.querySelector(".rock");
+const paperBtn = document.querySelector(".paper");
+const scissorsBtn = document.querySelector(".scissors");
+
+rockBtn.addEventListener("click", () => playGame("Rock"));
+paperBtn.addEventListener("click", () => playGame("Paper"));
+scissorsBtn.addEventListener("click",() => playGame("Scissors"));
